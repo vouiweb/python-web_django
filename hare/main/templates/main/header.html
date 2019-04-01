@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<meta name="robots" content="index,follow">
+
+			<title> {% block title %} {% endblock %} </title>
+
+		<meta name="description" content="">
+		
+		<link rel="shortcut icon" type="image/x-icon" href="">
+	
+		{% load staticfiles %}
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		
+		{% block link %}
+		{% endblock %}
+
+	</head>
+	<body>
+
+		<header>
+			<h1><a href="/"><i class="fa fa-coffee" aria-hidden="true"></i> Расписание</a></h1>
+			<nav>
+				{% if user.is_authenticated %}
+					<a href="/edit">Изменить расписание</a>
+					<a href="/exit">Выход</a>
+				{% else %}
+					<a href="/login" id="login">Вход</a>
+					<a href="/registration" id="registration">Регистрация</a>
+				{% endif %}
+			</nav>
+		</header>
+
+		{% block data %}
+		{% endblock %}
+
+	</body>
+</html>
